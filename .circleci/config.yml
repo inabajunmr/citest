@@ -1,0 +1,13 @@
+## Customize the test machine
+machine:
+  timezone: Asia/Tokyo
+  java:
+    version: oraclejdk8
+
+checkout:
+  post:
+    - chmod +x ./gradlew # Grant execution permission
+
+test:
+  override:
+    - ./gradlew test 
