@@ -3,11 +3,14 @@ machine:
   timezone: Asia/Tokyo
   java:
     version: oraclejdk8
-
 checkout:
   post:
     - chmod +x ./gradlew # Grant execution permission
-
 test:
   override:
-    - ./gradlew test 
+    - ./gradlew test
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test
