@@ -1,0 +1,18 @@
+machine:
+  timezone:
+  timezone: Asia/Tokyo
+  java:
+    version:
+      oraclejdk8
+general:
+  artifacts:
+    - "build/reports/tests"
+test:
+  override:
+    - ./gradlew test
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+checkout:
+  post:
+    - chmod +x ./gradlew
